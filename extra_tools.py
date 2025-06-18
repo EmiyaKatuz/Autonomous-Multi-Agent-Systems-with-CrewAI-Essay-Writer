@@ -1,7 +1,8 @@
 import wikipedia
 import requests
 from bs4 import BeautifulSoup
-from crewai_tools import tool
+from crewai.tools import tool
+
 
 @tool("Wikipedia Search Tool")
 def search_wikipedia(query: str) -> str:
@@ -13,9 +14,9 @@ def search_wikipedia(query: str) -> str:
         try:
             wiki_page = wikipedia.page(title=page_title, auto_suggest=False)
             summaries.append(f"Page: {page_title}\nSummary: {wiki_page.summary}")
-        except wikipedia.PageError: # Page Not Found
+        except wikipedia.PageError:  # Page Not Found
             pass
-        except wikipedia.DisambiguationError: # Disambiguation Error
+        except wikipedia.DisambiguationError:  # Disambiguation Error
             pass
 
     if not summaries:
@@ -32,6 +33,5 @@ def scrap_webpage(target_url):
 
     soup = BeautifulSoup(html_content, "html.parser")
     stripped_content = soup.get_text()
-
 
     return stripped_content

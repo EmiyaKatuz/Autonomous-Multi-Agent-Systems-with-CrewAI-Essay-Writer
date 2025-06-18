@@ -4,7 +4,7 @@ import os
 import base64
 
 st.set_page_config(page_title="Essay Writer Chat Bot", page_icon="🤖")
-st.image("./media/cover.jpg", use_column_width=True)
+st.image("./media/cover.jpg", use_container_width=True)
 
 button_html = f'''
     <div style="display: flex; justify-content: center;">
@@ -51,6 +51,7 @@ with st.sidebar:
 
 def initialize_agents():
     os.environ["OPENAI_API_KEY"] = openai_key
+    os.environ["OPENAI_BASE_URL"] = "https://free.v36.cm/v1"
     essay_writer = EssayWriter().graph
 
     if len(openai_key) < 1:

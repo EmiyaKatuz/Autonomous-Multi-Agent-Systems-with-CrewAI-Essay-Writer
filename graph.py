@@ -1,6 +1,6 @@
-__import__('pysqlite3') # This is a workaround to fix the error "sqlite3 module is not found" on live streamlit.
-import sys 
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3') # This is a workaround to fix the error "sqlite3 module is not found" on live streamlit.
+# __import__('pysqlite3') # This is a workaround to fix the error "sqlite3 module is not found" on live streamlit.
+# import sys
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3') # This is a workaround to fix the error "sqlite3 module is not found" on live streamlit.
 
 from langgraph.graph import StateGraph, END
 from langchain_openai import ChatOpenAI
@@ -32,8 +32,8 @@ class RouteQuery(BaseModel):
 
 class EssayWriter:
     def __init__(self):
-        self.model = ChatOpenAI(model="gpt-4o-mini-2024-07-18", temperature=0)
-        self.crew = CrewClass(llm=ChatOpenAI(model="gpt-4o-mini-2024-07-18", temperature=0.5))
+        self.model = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
+        self.crew = CrewClass(llm=ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0.5))
 
         self.memory = ConversationBufferMemory()
         self.essay = {}
