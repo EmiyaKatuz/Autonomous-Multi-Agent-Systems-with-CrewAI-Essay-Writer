@@ -32,8 +32,8 @@ class RouteQuery(BaseModel):
 
 class EssayWriter:
     def __init__(self):
-        self.model = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
-        self.crew = CrewClass(llm=ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0.5))
+        self.model = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+        self.crew = CrewClass(llm=ChatOpenAI(model="gpt-4o-mini", temperature=0.5))
 
         self.memory = ConversationBufferMemory()
         self.essay = {}
